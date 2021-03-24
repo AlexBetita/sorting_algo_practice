@@ -21,8 +21,14 @@ const countingSort = (arr, k) => {
   count.pop()
   count.unshift(0)
 
+  // for(i in arr){
+  //   output[count[Number(arr[i].toString().slice(-1))]] = arr[i]
+  //   count[Number(arr[i].toString().slice(-1))] += 1
+  // }
+
+  // return indices instead
   for(i in arr){
-    output[count[Number(arr[i].toString().slice(-1))]] = arr[i]
+    output[count[Number(arr[i].toString().slice(-1))]] = Number(i)
     count[Number(arr[i].toString().slice(-1))] += 1
   }
 
@@ -32,3 +38,5 @@ const countingSort = (arr, k) => {
 // let arr = [3, 1, 2, 0, 1, 1, 3]
 
 // countingSort(arr, 3)
+
+module.exports = countingSort
