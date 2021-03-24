@@ -10,7 +10,7 @@ const countingSort = (arr, k) => {
   let output = arr.map(_ => 0)
 
   for(i in arr){
-    count[Number(arr[i].toString().slice(-1))] += 1
+    count[arr[i]] += 1
   }
 
   for(let i = 0; i < count.length; i++){
@@ -21,17 +21,37 @@ const countingSort = (arr, k) => {
   count.pop()
   count.unshift(0)
 
-  // for(i in arr){
-  //   output[count[Number(arr[i].toString().slice(-1))]] = arr[i]
-  //   count[Number(arr[i].toString().slice(-1))] += 1
-  // }
-
-  // return indices instead
   for(i in arr){
-    output[count[Number(arr[i].toString().slice(-1))]] = Number(i)
-    count[Number(arr[i].toString().slice(-1))] += 1
+    output[count[arr[i]]] = Number(i)
+    count[arr[i]] += 1
   }
 
+  return output
+}
+
+
+//
+const countingSort2 = (arr, newArray, k) => {
+  let count = new Array(k); for(let i = k + 1; i--;) count[i] = 0;
+  let total = 0
+  let output = arr.map(_ => 0)
+
+  for(i in newArray){
+    count[newArray[i]] += 1
+  }
+
+  for(let i = 0; i < count.length; i++){
+    total = count[i] + total
+    count[i] = total
+  }
+
+  count.pop()
+  count.unshift(0)
+
+  for(i in newArray){
+    output[count[newArray[i]]] = arr[i]
+    count[newArray[i]] += 1
+  }
   return output
 }
 
@@ -39,4 +59,7 @@ const countingSort = (arr, k) => {
 
 // countingSort(arr, 3)
 
-module.exports = countingSort
+module.exports = {
+  countingSort,
+  countingSort2
+}
