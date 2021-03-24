@@ -1,7 +1,7 @@
 const countingSort = require('./counting_sort')
 
 const radixSort = (arr, step = arr.length) =>{
-  debugger
+
   newArray = arr.map(el => Number(el.toString().slice(0, step).slice(-1)))
   let pastArr = arr.slice()
   let maxRange = Math.max(...newArray)
