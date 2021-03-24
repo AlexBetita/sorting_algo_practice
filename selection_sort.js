@@ -21,6 +21,31 @@ const selectionSort = (arr) => {
   return arr
 }
 
+function swap(arr, index1, index2) {
+    let temp = arr[index1]
+    arr[index1] = arr[index2]
+    arr[index2] = temp
+  }
+
+function selectionSort2(list) {
+    let min = 0
+    let minValue = Infinity
+    let smallestIdx;
+
+    while (min !== list.length - 1) {
+        minValue = Infinity
+        for (let i = min; i < list.length; i++) {
+            if (minValue > list[i]) {
+                minValue = list[i]
+                smallestIdx = i
+            }
+        }
+        swap(list, min, smallestIdx)
+        min++
+    }
+    return list
+}
+
 let array = [2, -1, 4, 3, 7, 3];
 
 selectionSort(array)

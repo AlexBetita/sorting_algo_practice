@@ -17,3 +17,5 @@ const bubbleSort = (arr) => {
   }
   return arr
 }
+
+// O(n2)

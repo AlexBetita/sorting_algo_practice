@@ -11,3 +11,5 @@ const insertion = arr => {
   }
   return arr
 }
+
+//O(n2)
